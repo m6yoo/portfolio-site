@@ -1,6 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #111;
     color: white;
     font-family: Arial, sans-serif;
-    padding: 40px;
+    line-height: 1.6;
+}
+
+/* Navigation */
+
+header {
+    position: sticky;
+    top: 0;
+    background: #111;
+    padding: 20px 40px;
+    border-bottom: 1px solid #333;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #999;
+}
+
+/* Sections */
+
+section {
+    min-height: 100vh;
+    padding: 100px 40px;
+}
+
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: linear-gradient(
+        135deg,
+        #111 0%,
+        #1a1a1a 50%,
+        #0d0d0d 100%
+    );
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+#hero h1 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #bbb;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+.primary {
+    background: white;
+    color: black;
+}
+
+.primary:hover {
+    transform: translateY(-2px);
+}
+
+.secondary {
+    border: 1px solid white;
+    color: white;
+}
+
+.secondary:hover {
+    background: white;
+    color: black;
 }
