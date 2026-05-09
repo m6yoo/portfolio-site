@@ -20,9 +20,11 @@ body {
 header {
     position: sticky;
     top: 0;
+    z-index: 1000;
     background: #111;
     padding: 20px 40px;
     border-bottom: 1px solid #333;
+    
 }
 
 nav {
@@ -54,9 +56,7 @@ nav {
 /* Sections */
 
 section {
-    min-height: 100vh;
-    padding: 100px 40px;
-    scroll-margin-top: 100px;
+    padding: 80px 40px;
 }
 
 #hero {
@@ -140,7 +140,7 @@ footer {
 }
 
 .section-heading {
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .section-label {
@@ -153,8 +153,9 @@ footer {
 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 8px;
     background: #000;
@@ -168,3 +169,10 @@ footer {
     height: 100%;
 }
 
+#showreel {
+    padding: 80px 40px;
+    scroll-margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
