@@ -178,6 +178,9 @@ footer {
 }
 
 /* reusable card css */
+/* <a href="projects/project-x.html" class="project-card"> to duplicate
+to add a new project */
+
 
 .portfolio-page {
     padding: 120px 40px;
@@ -220,3 +223,52 @@ footer {
 .project-card:hover img {
     transform: scale(1.05);
 }
+
+/* for project html stuff*/
+
+.project-hero {
+    text-align: center;
+    padding: 140px 40px 80px;
+}
+
+.project-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.project-hero p {
+    color: #888;
+    margin-bottom: 50px;
+}
+
+.project-content {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+.project-block {
+    margin-bottom: 80px;
+}
+
+.project-block h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.project-block p,
+.project-block li {
+    font-size: 1.05rem;
+    color: #ccc;
+    line-height: 1.8;
+}
+
+.project-block ul {
+    list-style: none;
+}
+
+.back-section {
+    text-align: center;
+    padding: 40px 0 100px;
+}
+/* for project html stuff*/
