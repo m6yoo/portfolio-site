@@ -440,3 +440,30 @@ a, button, .project-card img {
     min-height: 160px;
     resize: vertical;
 }
+
+/*photos */
+
+.photo-category {
+    margin-bottom: 120px;
+}
+
+.photo-category h2 {
+    margin-bottom: 30px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.02);
+}
