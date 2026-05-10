@@ -413,3 +413,30 @@ a, button, .project-card img {
     transform: translateY(-3px);
     opacity: 0.85;
 }
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.contact-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
