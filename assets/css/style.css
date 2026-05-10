@@ -10,8 +10,8 @@ html {
 
 body {
     background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
+    color: white;  
+    font-family: "Inter", sans-serif;
     line-height: 1.6;
 }
 
@@ -56,7 +56,7 @@ nav {
 /* Sections */
 
 section {
-    padding: 80px 40px;
+    padding: var(--space-xl) var(--space-md);
 }
 
 #hero {
@@ -248,7 +248,8 @@ to add a new project */
 }
 
 .project-block {
-    margin-bottom: 80px;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid #222;
 }
 
 .project-block h2 {
@@ -318,3 +319,39 @@ to add a new project */
 
 }
 /* mobile width idk */
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* spacings */
+:root {
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 32px;
+    --space-lg: 64px;
+    --space-xl: 120px;
+}
+
+/* hover transitions */
+a, button, .project-card img {
+    transition: all 0.25s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.85);
+}
