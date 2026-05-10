@@ -318,7 +318,26 @@ to add a new project */
     .project-content {
         padding: 60px 20px;
     }
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
 
+    .about-container img {
+        margin: 0 auto;
+    }
+
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .logo-grid img {
+        height: 80px;
+    }
+
+    
 }
 /* mobile width idk */
 
