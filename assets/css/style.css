@@ -318,10 +318,36 @@ to add a new project */
     .project-content {
         padding: 60px 20px;
     }
+
     .about-container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 30px;
+    }
+
+    .about-container img {
+        width: 180px;
+        max-width: 80%;
+    }
+
+    .about-text {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .logo-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .logo-grid img {
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+        padding: 15px;
     }
 
  
