@@ -390,3 +390,26 @@ a, button, .project-card img {
     border-radius: 8px;
     object-fit: contain;
 }
+
+.social-links a {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 25px;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: white;
+    border-radius: 8px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.social-links img {
+    width: 24px;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    opacity: 0.85;
+}
