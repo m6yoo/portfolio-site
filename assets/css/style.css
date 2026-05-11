@@ -325,29 +325,25 @@ to add a new project */
         align-items: center;
         text-align: center;
         gap: 30px;
-    }
-
-    .about-container img {
-        width: 180px;
-        max-width: 80%;
+        width: 100%;
     }
 
     .about-text {
         width: 100%;
         max-width: 100%;
     }
-
-    .logo-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
+    .about-container p,
+    .about-container h1,
+    .about-container h2 {
+        width: 100%;
+        text-align: center;
     }
 
     .logo-grid img {
         width: 100%;
-        height: auto;
-        max-height: 80px;
+        aspect-ratio: 3 / 2;
         object-fit: contain;
-        padding: 15px;
+        padding: 10px;
     }
 
  
