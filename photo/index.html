@@ -91,8 +91,6 @@
     <button class="lb-next" id="lbNext">&#8250;</button>
 </div>
 
-console.log("PHOTO GRID SCRIPT LOADED");
-
 <script>
     // Size each cell to the photo's real aspect ratio. Your sets only
     // use 5 known ratios, so match each photo to the closest of those
@@ -142,13 +140,40 @@ console.log("PHOTO GRID SCRIPT LOADED");
         }
     }
 
-    document.querySelectorAll('.photo-grid img').forEach(img => {
-        if (img.complete && img.naturalWidth) {
-            sizeCell(img);
-        } else {
-            img.addEventListener('load', () => sizeCell(img));
+    function prepareCategory(category) {
+        const images = Array.from(category.querySelectorAll('.photo-grid img'));
+
+        if (!images.length) {
+            category.classList.add('gallery-ready');
+            return;
         }
-    });
+
+        const imagePromises = images.map(img => new Promise(resolve => {
+            if (img.complete && img.naturalWidth) {
+                sizeCell(img);
+                resolve();
+            } else {
+                img.addEventListener('load', () => {
+                    sizeCell(img);
+                    resolve();
+                }, { once: true });
+
+                img.addEventListener('error', resolve, { once: true });
+            }
+        }));
+
+        Promise.all(imagePromises).then(() => {
+            // Allow the existing row-span calculations to finish before
+            // revealing the grid.
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    category.classList.add('gallery-ready');
+                });
+            });
+        });
+    }
+
+    document.querySelectorAll('.photo-category').forEach(prepareCategory);
 
     // Column width changes with viewport size, which changes each
     // cell's real rendered height — recompute row-spans after resize.
@@ -171,10 +196,8 @@ console.log("PHOTO GRID SCRIPT LOADED");
             const target = btn.dataset.filter;
             categories.forEach(cat => cat.classList.toggle('active', cat.id === target));
             const shown = document.getElementById(target);
-            shown.querySelectorAll('.photo-grid a').forEach(link => {
-                const img = link.querySelector('img');
-                if (img.complete && img.naturalWidth) computeRowSpan(link);
-            });
+            shown.classList.remove('gallery-ready');
+            prepareCategory(shown);
         });
     });
 
@@ -224,4 +247,3 @@ console.log("PHOTO GRID SCRIPT LOADED");
 
 </body>
 </html>
-

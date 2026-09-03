@@ -1,4 +1,4 @@
-/*reset + root tokens */
+*reset + root tokens */
 
 * {
     margin: 0;
@@ -382,6 +382,13 @@ footer {
 
 .photo-category.active {
     display: block;
+}
+
+/* Keep the grid hidden until its image dimensions have loaded and
+   the JavaScript has calculated the correct row spans. This prevents
+   the 10px fallback rows from being visible on slow connections. */
+.photo-category:not(.gallery-ready) .photo-grid {
+    visibility: hidden;
 }
 
 .photo-grid {
