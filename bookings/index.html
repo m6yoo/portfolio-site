@@ -52,39 +52,51 @@
   <section id="packages" class="bookings-section">
     <div class="bookings-inner">
       <h2>Event coverage</h2>
-      <p>Every package is built around stills, with video clips added where it suits the event.</p>
+      <p>Choose photo, video or both. Prices shown are starting points, and every job is a little different, so get in touch for a quote and we can chat through what you need.</p>
 
-      <div class="package-grid">
-        <!-- TODO: rename packages, fill in what's included, add prices. Keep names in sync with the form dropdown. -->
+      <div class="package-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr))">
+        <!-- TODO: fill in hours (X), photo counts (Z), film length (X), turnaround (Y) and the "from" prices (£X) for each card. Keep names in sync with the form dropdown. -->
         <article class="package-card">
-          <h3>Package 1</h3>
+          <h3>Photo Basic</h3>
           <ul>
-            <li>What's included</li>
-            <li>Hours of coverage</li>
-            <li>Edited photos delivered in X days</li>
+            <li>X hours of coverage</li>
+            <li>Z edited photos</li>
+            <li>Turnaround: Y days</li>
           </ul>
-          <div class="package-price">Price to be added</div>
-          <button class="btn secondary choose" type="button" data-pkg="Package 1">Choose this</button>
+          <div class="package-price">From £X</div>
+          <button class="btn secondary choose" type="button" data-pkg="Photo Basic">Choose this</button>
         </article>
         <article class="package-card">
-          <h3>Package 2</h3>
+          <h3>Photo Standard</h3>
           <ul>
-            <li>What's included</li>
-            <li>Hours of coverage</li>
-            <li>Edited photos delivered in X days</li>
+            <li>X hours of coverage</li>
+            <li>Z edited photos</li>
+            <li>Turnaround: Y days</li>
           </ul>
-          <div class="package-price">Price to be added</div>
-          <button class="btn secondary choose" type="button" data-pkg="Package 2">Choose this</button>
+          <div class="package-price">From £X</div>
+          <button class="btn secondary choose" type="button" data-pkg="Photo Standard">Choose this</button>
         </article>
         <article class="package-card">
-          <h3>Package 3</h3>
+          <h3>Event film</h3>
           <ul>
-            <li>What's included</li>
-            <li>Hours of coverage</li>
-            <li>Edited photos delivered in X days</li>
+            <li>X hours of coverage</li>
+            <li>Short event film (X minutes)</li>
+            <li>Turnaround: Y days</li>
+            <li>Continuous shooting available at extra cost</li>
           </ul>
-          <div class="package-price">Price to be added</div>
-          <button class="btn secondary choose" type="button" data-pkg="Package 3">Choose this</button>
+          <div class="package-price">From £X</div>
+          <button class="btn secondary choose" type="button" data-pkg="Event film">Choose this</button>
+        </article>
+        <article class="package-card">
+          <h3>Photo + film</h3>
+          <ul>
+            <li>X hours of coverage</li>
+            <li>Z edited photos</li>
+            <li>Short event film (X minutes)</li>
+            <li>Turnaround: Y days</li>
+          </ul>
+          <div class="package-price">From £X</div>
+          <button class="btn secondary choose" type="button" data-pkg="Photo + film">Choose this</button>
         </article>
       </div>
     </div>
@@ -96,7 +108,7 @@
       <p>Already have the footage or photos? Send them over and I'll turn them into content that's ready to post. Video is my strongest area, and I edit in Premiere Pro, After Effects and DaVinci Resolve.</p>
 
       <div class="package-grid">
-        <!-- TODO: add prices and turnaround -->
+        <!-- TODO: add turnaround -->
         <article class="package-card">
           <h3>Short-form video</h3>
           <ul>
@@ -105,7 +117,7 @@
             <li>Motion graphics where it helps</li>
             <li>Turnaround: X days</li>
           </ul>
-          <div class="package-price">Price per video to be added</div>
+          <div class="package-price">Enquire for a quote</div>
           <button class="btn secondary choose" type="button" data-pkg="Short-form video editing">Enquire</button>
         </article>
         <article class="package-card">
@@ -116,7 +128,7 @@
             <li>Colour grading in DaVinci Resolve</li>
             <li>Turnaround: X days</li>
           </ul>
-          <div class="package-price">Price per video to be added</div>
+          <div class="package-price">Enquire for a quote</div>
           <button class="btn secondary choose" type="button" data-pkg="Long-form video editing">Enquire</button>
         </article>
         <article class="package-card">
@@ -127,12 +139,12 @@
             <li>Event galleries and social posts</li>
             <li>Turnaround: X days</li>
           </ul>
-          <div class="package-price">Price to be added</div>
+          <div class="package-price">Enquire for a quote</div>
           <button class="btn secondary choose" type="button" data-pkg="Photo editing">Enquire</button>
         </article>
       </div>
       <div style="margin-top: var(--space-md)">
-        <p>Video editing is priced per video. Need a regular monthly batch? Mention it in your enquiry and I'll put something together that fits.</p>
+        <p>Video editing is quoted per video. Need a regular monthly batch? Mention it in your enquiry and I'll put something together that fits.</p>
         <p>Two rounds of revisions are included. Any further rounds are agreed case by case.</p>
         <p>You send the files by link and I deliver the finished edit through Google Drive. Delivery links are deleted after a week, so download your files in that time.</p>
       </div>
@@ -145,16 +157,16 @@
       <p>Selling a car? Clear, well-lit photos make a listing easier to trust. I'll come to you, shoot the car and send back edited photos ready to upload to Facebook Marketplace, Gumtree or AutoTrader.</p>
 
       <div class="package-grid" style="grid-template-columns: minmax(260px, 420px)">
-        <!-- TODO: set number of photos, add-on price for the walkaround video, turnaround and the fixed price -->
+        <!-- TODO: set number of photos and turnaround -->
         <article class="package-card">
           <h3>Car listing</h3>
           <ul>
             <li>X edited photos</li>
-            <li>Optional walkaround video (add-on price to be added)</li>
+            <li>Optional walkaround video</li>
             <li>Shot at your location</li>
             <li>Turnaround: X days</li>
           </ul>
-          <div class="package-price">Fixed price to be added</div>
+          <div class="package-price">Fixed price, enquire for a quote</div>
           <button class="btn secondary choose" type="button" data-pkg="Car listing photos">Enquire</button>
         </article>
       </div>
@@ -170,7 +182,7 @@
         <li><strong>Shoot</strong>I arrive early, cover the event and keep it relaxed.</li>
         <li><strong>Receive</strong>Edited photos arrive in an online gallery within the agreed time.</li>
       </ol>
-      <!-- TODO: confirm deposit and delivery wording once pricing is set -->
+      <!-- TODO: confirm deposit and delivery wording -->
     </div>
   </section>
 
@@ -206,9 +218,10 @@
         <label>Service or package
           <select name="package" id="package">
             <option>Not sure yet</option>
-            <option>Package 1</option>
-            <option>Package 2</option>
-            <option>Package 3</option>
+            <option>Photo Basic</option>
+            <option>Photo Standard</option>
+            <option>Event film</option>
+            <option>Photo + film</option>
             <option>Short-form video editing</option>
             <option>Long-form video editing</option>
             <option>Photo editing</option>
