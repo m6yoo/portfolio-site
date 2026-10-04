@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>mayoo | Bookings</title>
-<meta name="description" content="Book Mayoo for small events and social media content in London. Photo-led packages, quick replies on WhatsApp.">
+<meta name="description" content="Book Mayoo for small events in London, or send footage and photos for social media video and photo editing.">
 <link rel="canonical" href="https://mayoo.media/bookings">
 <meta property="og:title" content="Book Mayoo">
-<meta property="og:description" content="Event photography and video for small events and social content in London.">
+<meta property="og:description" content="Event photography and video in London, plus social media video and photo editing.">
 <meta property="og:url" content="https://mayoo.media/bookings">
 <!-- TODO: add og:image once you pick a share photo -->
 
@@ -38,7 +38,7 @@
     <div class="bookings-inner">
       <div class="hero-content">
         <h1>Book Mayoo for your event</h1>
-        <p class="hero-description">Photos and short video for small events and social content across London. Tell me what you have planned and I'll reply with availability and a quote.</p>
+        <p class="hero-description">Photos and short video for small events across London, plus video and photo editing for social media content. Tell me what you need and I'll reply with availability and a quote.</p>
         <div class="hero-buttons">
           <a class="btn primary wa-link" href="#" rel="noopener">Message on WhatsApp</a>
           <a class="btn secondary" href="#enquire">Send an enquiry</a>
@@ -51,7 +51,7 @@
 
   <section id="packages" class="bookings-section">
     <div class="bookings-inner">
-      <h2>Packages</h2>
+      <h2>Event coverage</h2>
       <p>Every package is built around stills, with video clips added where it suits the event.</p>
 
       <div class="package-grid">
@@ -90,9 +90,58 @@
     </div>
   </section>
 
+  <section id="editing" class="bookings-section">
+    <div class="bookings-inner">
+      <h2>Editing</h2>
+      <p>Already have the footage or photos? Send them over and I'll turn them into content that's ready to post. Video is my strongest area, and I edit in Premiere Pro, After Effects and DaVinci Resolve.</p>
+
+      <div class="package-grid">
+        <!-- TODO: add prices and turnaround -->
+        <article class="package-card">
+          <h3>Short-form video</h3>
+          <ul>
+            <li>Reels, TikToks and YouTube Shorts</li>
+            <li>Cuts, pacing, sound and captions</li>
+            <li>Motion graphics where it helps</li>
+            <li>Turnaround: X days</li>
+          </ul>
+          <div class="package-price">Price per video to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Short-form video editing">Enquire</button>
+        </article>
+        <article class="package-card">
+          <h3>Long-form video</h3>
+          <ul>
+            <li>YouTube videos, podcasts and event films</li>
+            <li>Story structure, pacing and sound</li>
+            <li>Colour grading in DaVinci Resolve</li>
+            <li>Turnaround: X days</li>
+          </ul>
+          <div class="package-price">Price per video to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Long-form video editing">Enquire</button>
+        </article>
+        <article class="package-card">
+          <h3>Photo editing</h3>
+          <ul>
+            <li>Lightroom colour, exposure and consistency</li>
+            <li>Basic Photoshop clean-up</li>
+            <li>Event galleries and social posts</li>
+            <li>Turnaround: X days</li>
+          </ul>
+          <div class="package-price">Price to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Photo editing">Enquire</button>
+        </article>
+      </div>
+      <div style="margin-top: var(--space-md)">
+        <p>Video editing is priced per video. Need a regular monthly batch? Mention it in your enquiry and I'll put something together that fits.</p>
+        <p>Two rounds of revisions are included. Any further rounds are agreed case by case.</p>
+        <p>You send the files by link and I deliver the finished edit through Google Drive. Delivery links are deleted after a week, so download your files in that time.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="how" class="bookings-section">
     <div class="bookings-inner">
-      <h2>How it works</h2>
+      <h2>How event bookings work</h2>
       <ol class="booking-steps">
         <li><strong>Enquire</strong>Send the form or message me on WhatsApp with the date, place and type of event.</li>
         <li><strong>Confirm</strong>I reply with availability and a quote. A deposit holds the date.</li>
@@ -123,8 +172,8 @@
         <label>Phone or WhatsApp (optional)
           <input name="phone" type="tel" autocomplete="tel">
         </label>
-        <label>Event type
-          <input name="event_type" type="text" placeholder="Birthday, society night, launch..." required>
+        <label>Event type (for event bookings)
+          <input name="event_type" type="text" placeholder="Birthday, society night, launch...">
         </label>
         <label>Event date
           <input name="event_date" type="date">
@@ -132,16 +181,19 @@
         <label>Location
           <input name="location" type="text" placeholder="Venue or area">
         </label>
-        <label>Package
+        <label>Service or package
           <select name="package" id="package">
             <option>Not sure yet</option>
             <option>Package 1</option>
             <option>Package 2</option>
             <option>Package 3</option>
+            <option>Short-form video editing</option>
+            <option>Long-form video editing</option>
+            <option>Photo editing</option>
           </select>
         </label>
         <label>Anything else I should know
-          <textarea name="message"></textarea>
+          <textarea name="message" placeholder="e.g. a monthly batch of edits, a link to your footage, deadlines"></textarea>
         </label>
         <!-- spam trap: real people never see or fill this -->
         <div class="hp" aria-hidden="true">
