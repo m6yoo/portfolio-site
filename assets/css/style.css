@@ -599,3 +599,159 @@ footer {
         grid-auto-rows: 10px;
     }
 }
+
+/* ---------- bookings page (paste at the bottom of style.css) ---------- */
+
+.bookings section[id] {
+    scroll-margin-top: 90px;
+}
+
+.bookings-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.bookings-hero {
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+}
+
+.bookings-section {
+    border-top: 1px solid #222;
+}
+
+/* packages */
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: var(--space-md);
+}
+
+.package-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.package-card h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+}
+
+.package-card ul {
+    list-style: none;
+    margin-bottom: var(--space-md);
+}
+
+.package-card li {
+    color: #ccc;
+    padding: 8px 0;
+    border-bottom: 1px solid #222;
+}
+
+.package-price {
+    margin-top: auto;
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* buttons used as <button> need to match the <a> versions */
+button.btn {
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button.primary {
+    border: 1px solid white;
+}
+
+/* how it works (a real sequence, so it is numbered) */
+.booking-steps {
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.booking-steps li {
+    counter-increment: step;
+    border-top: 1px solid white;
+    padding-top: var(--space-sm);
+    color: #ccc;
+}
+
+.booking-steps li::before {
+    content: counter(step);
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-xs);
+}
+
+.booking-steps strong {
+    display: block;
+    color: white;
+    margin-bottom: 4px;
+}
+
+/* enquiry form (builds on .contact-container and .contact-form) */
+.bookings .contact-container {
+    align-items: start;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-weight: 500;
+}
+
+.contact-form select {
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form :focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.hp {
+    position: absolute;
+    left: -9999px;
+    height: 0;
+    overflow: hidden;
+}
+
+#form-status {
+    min-height: 1.7em;
+}
+
+/* the header sits on a dark page, so keep the current page visible in the nav */
+.nav-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+@media (max-width: 768px) {
+    .bookings-hero {
+        padding: 80px 20px 40px;
+    }
+}
+
+/* email links (bookings page and homepage contact list) */
+.email-link {
+    color: white;
+    text-underline-offset: 4px;
+}

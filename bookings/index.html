@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mayoo | Bookings</title>
+<meta name="description" content="Book Mayoo for small events and social media content in London. Photo-led packages, quick replies on WhatsApp.">
+<link rel="canonical" href="https://mayoo.media/bookings">
+<meta property="og:title" content="Book Mayoo">
+<meta property="og:description" content="Event photography and video for small events and social content in London.">
+<meta property="og:url" content="https://mayoo.media/bookings">
+<!-- TODO: add og:image once you pick a share photo -->
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bookings">
+
+<header>
+  <nav>
+    <div class="logo">mayoo</div>
+    <ul class="nav-links">
+      <li><a href="/#showreel">Showreel</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#clients">Clients</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/video/">Video</a></li>
+      <li><a href="/photo/">Photo</a></li>
+      <li><a href="/bookings/" aria-current="page">Bookings</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="bookings-hero">
+    <div class="bookings-inner">
+      <div class="hero-content">
+        <h1>Book Mayoo for your event</h1>
+        <p class="hero-description">Photos and short video for small events and social content across London. Tell me what you have planned and I'll reply with availability and a quote.</p>
+        <div class="hero-buttons">
+          <a class="btn primary wa-link" href="#" rel="noopener">Message on WhatsApp</a>
+          <a class="btn secondary" href="#enquire">Send an enquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO: add 2-3 best stills here using .project-card or a simple img row (compressed, loading="lazy") -->
+
+  <section id="packages" class="bookings-section">
+    <div class="bookings-inner">
+      <h2>Packages</h2>
+      <p>Every package is built around stills, with video clips added where it suits the event.</p>
+
+      <div class="package-grid">
+        <!-- TODO: rename packages, fill in what's included, add prices. Keep names in sync with the form dropdown. -->
+        <article class="package-card">
+          <h3>Package 1</h3>
+          <ul>
+            <li>What's included</li>
+            <li>Hours of coverage</li>
+            <li>Edited photos delivered in X days</li>
+          </ul>
+          <div class="package-price">Price to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Package 1">Choose this</button>
+        </article>
+        <article class="package-card">
+          <h3>Package 2</h3>
+          <ul>
+            <li>What's included</li>
+            <li>Hours of coverage</li>
+            <li>Edited photos delivered in X days</li>
+          </ul>
+          <div class="package-price">Price to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Package 2">Choose this</button>
+        </article>
+        <article class="package-card">
+          <h3>Package 3</h3>
+          <ul>
+            <li>What's included</li>
+            <li>Hours of coverage</li>
+            <li>Edited photos delivered in X days</li>
+          </ul>
+          <div class="package-price">Price to be added</div>
+          <button class="btn secondary choose" type="button" data-pkg="Package 3">Choose this</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="bookings-section">
+    <div class="bookings-inner">
+      <h2>How it works</h2>
+      <ol class="booking-steps">
+        <li><strong>Enquire</strong>Send the form or message me on WhatsApp with the date, place and type of event.</li>
+        <li><strong>Confirm</strong>I reply with availability and a quote. A deposit holds the date.</li>
+        <li><strong>Shoot</strong>I arrive early, cover the event and keep it relaxed.</li>
+        <li><strong>Receive</strong>Edited photos arrive in an online gallery within the agreed time.</li>
+      </ol>
+      <!-- TODO: confirm deposit and delivery wording once pricing is set -->
+    </div>
+  </section>
+
+  <section id="enquire" class="bookings-section">
+    <div class="contact-container">
+      <div>
+        <h2>Send an enquiry</h2>
+        <p>Fill in the form and I'll reply by WhatsApp or email, whichever you give me. If it's quicker, message me directly.</p>
+        <p style="margin-top: var(--space-sm)"><a class="btn primary wa-link" href="#" rel="noopener">Message on WhatsApp</a></p>
+        <p style="margin-top: var(--space-sm)">Prefer email? <a class="email-link" href="mailto:contact@mayoo.media">contact@mayoo.media</a></p>
+      </div>
+
+      <form id="enquiry" class="contact-form" action="https://formspree.io/f/mykobndw" method="POST">
+        <input type="hidden" name="_subject" value="Booking enquiry from mayoo.media">
+        <label>Name
+          <input name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>Phone or WhatsApp (optional)
+          <input name="phone" type="tel" autocomplete="tel">
+        </label>
+        <label>Event type
+          <input name="event_type" type="text" placeholder="Birthday, society night, launch..." required>
+        </label>
+        <label>Event date
+          <input name="event_date" type="date">
+        </label>
+        <label>Location
+          <input name="location" type="text" placeholder="Venue or area">
+        </label>
+        <label>Package
+          <select name="package" id="package">
+            <option>Not sure yet</option>
+            <option>Package 1</option>
+            <option>Package 2</option>
+            <option>Package 3</option>
+          </select>
+        </label>
+        <label>Anything else I should know
+          <textarea name="message"></textarea>
+        </label>
+        <!-- spam trap: real people never see or fill this -->
+        <div class="hp" aria-hidden="true">
+          <label>Leave empty <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div>
+          <button class="btn primary" type="submit">Send enquiry</button>
+        </div>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 Mayoorathan Sukumar</p>
+</footer>
+
+<script>
+(function(){
+  // TODO: business WhatsApp number, international format with no + or spaces (e.g. 447000000000)
+  var WA_NUMBER = "44XXXXXXXXXX";
+  var msg = "Hi Mayoo, I'd like to ask about booking you for an event.";
+  var waLink = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+  document.querySelectorAll(".wa-link").forEach(function(a){
+    a.href = waLink; a.target = "_blank";
+  });
+
+  // "Choose this" fills the package field and jumps to the form
+  var select = document.getElementById("package");
+  document.querySelectorAll(".choose").forEach(function(b){
+    b.addEventListener("click", function(){
+      select.value = b.getAttribute("data-pkg");
+      document.getElementById("enquire").scrollIntoView();
+      document.querySelector("#enquiry [name=name]").focus({preventScroll:true});
+    });
+  });
+
+  // Send without leaving the page; the plain form POST still works if JS fails
+  var form = document.getElementById("enquiry");
+  var status = document.getElementById("form-status");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    status.textContent = "Sending...";
+    fetch(form.action, {method:"POST", body:new FormData(form), headers:{"Accept":"application/json"}})
+      .then(function(r){
+        if(!r.ok) throw new Error();
+        form.reset();
+        status.textContent = "Enquiry sent. I'll reply soon.";
+      })
+      .catch(function(){
+        status.textContent = "That didn't send. Check your connection and try again, or use WhatsApp.";
+      });
+  });
+})();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "51d3fcab493d488e8d8cf872163c8996"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>
