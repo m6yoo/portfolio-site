@@ -7,6 +7,11 @@
 }
 
 :root {
+    /* brand accents (business card) */
+    --wine: #6E1A2F;         /* C35 M100 Y75 K50 */
+    --wine-bright: #B03A58;  /* lifted wine for thin lines on the dark bg */
+    --cream: #F7F2EB;        /* C3 M5 Y8 K0 */
+
     --space-xs: 8px;
     --space-sm: 16px;
     --space-md: 32px;
@@ -144,22 +149,24 @@ footer {
 }
 
 .primary {
-    background: white;
-    color: black;
+    background: var(--wine);
+    color: var(--cream);
 }
 
 .primary:hover {
+    background: var(--wine-bright);
     transform: translateY(-2px);
 }
 
 .secondary {
-    border: 1px solid white;
+    border: 1px solid var(--wine-bright);
     color: white;
 }
 
 .secondary:hover {
-    background: white;
-    color: black;
+    background: var(--wine);
+    border-color: var(--wine);
+    color: var(--cream);
 }
 
 /*video block*/
@@ -293,7 +300,7 @@ footer {
     display: flex;
     width: 52px;
     height: 52px;
-    background: white;
+    background: var(--wine);
     border-radius: 8px;
     align-items: center;
     justify-content: center;
@@ -302,6 +309,7 @@ footer {
 
 .social-links img {
     width: 24px;
+    filter: brightness(0) invert(1); /* icons read as white on the wine tile */
 }
 
 .social-links a:hover {
@@ -373,7 +381,7 @@ footer {
     right: 0;
     bottom: -1px;
     height: 2px;
-    background: white;
+    background: var(--wine-bright);
 }
 
 .photo-category {
@@ -667,7 +675,23 @@ button.btn {
 }
 
 button.primary {
-    border: 1px solid white;
+    border: 1px solid var(--wine);
+}
+
+button.primary:hover {
+    border-color: var(--wine-bright);
+}
+
+/* contact form submit uses plain .btn, so style it to match */
+.contact-form button.btn {
+    background: var(--wine);
+    color: var(--cream);
+    border: 1px solid var(--wine);
+}
+
+.contact-form button.btn:hover {
+    background: var(--wine-bright);
+    border-color: var(--wine-bright);
 }
 
 /* how it works (a real sequence, so it is numbered) */
@@ -682,7 +706,7 @@ button.primary {
 
 .booking-steps li {
     counter-increment: step;
-    border-top: 1px solid white;
+    border-top: 1px solid var(--wine-bright);
     padding-top: var(--space-sm);
     color: #ccc;
 }
@@ -692,7 +716,7 @@ button.primary {
     display: block;
     font-size: 2rem;
     font-weight: 600;
-    color: white;
+    color: var(--wine-bright);
     margin-bottom: var(--space-xs);
 }
 
@@ -723,7 +747,7 @@ button.primary {
 }
 
 .contact-form :focus-visible {
-    outline: 2px solid white;
+    outline: 2px solid var(--wine-bright);
     outline-offset: 2px;
 }
 
@@ -741,6 +765,7 @@ button.primary {
 /* the header sits on a dark page, so keep the current page visible in the nav */
 .nav-links a[aria-current="page"] {
     text-decoration: underline;
+    text-decoration-color: var(--wine-bright);
     text-underline-offset: 6px;
 }
 
@@ -753,5 +778,6 @@ button.primary {
 /* email links (bookings page and homepage contact list) */
 .email-link {
     color: white;
+    text-decoration-color: var(--wine-bright);
     text-underline-offset: 4px;
 }
