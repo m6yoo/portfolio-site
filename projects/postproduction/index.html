@@ -1,106 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Production </title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Production | mayoo</title>
+<meta name="description" content="VFX work by Mayoo in DaVinci Resolve and Blender: CGI integration, camera tracking and set extensions.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-
 <header>
     <nav>
-        <div class="logo">mayoo</div>
-
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/photo/">Photo</a></li>
-        </ul>
+        <a class="logo" href="/" style="text-decoration:none">mayoo</a>
+        <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/video/" aria-current="page">Video</a></li><li><a href="/photo/">Photo</a></li><li><a href="/bookings/">Bookings</a></li></ul>
     </nav>
 </header>
-
 <section class="project-hero">
-    <h1>Post Production</h1>
-    <p>University Module · 2025/26</p>
-    <p>VFX Work</p>
-
-    <h2> CGI - DaVinci Resolve, Blender </h2>
-    <div class="video-wrapper">
-        <iframe
-            src="https://player.vimeo.com/video/1188843331?title=0&byline=0&portrait=0&badge=0
-            title="CGI Integration 1"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <h2> Nuclear Set Extension - DaVinci Resolve</h2>
-    <div class="video-wrapper">
-        <iframe
-            src="https://player.vimeo.com/video/1188843346?title=0&byline=0&portrait=0&badge=0
-            title="Nuclear Set Extension"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
-    </div>
-
-
-
-
+<h1>Post Production</h1>
+<p>University Module · 2025/26</p><p>VFX work</p>
+<h2>CGI integration | DaVinci Resolve, Blender</h2>
+<div class="video-wrapper"><iframe src="https://player.vimeo.com/video/1188843331?title=0&byline=0&portrait=0&badge=0" title="CGI integration" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<h2>Nuclear set extension | DaVinci Resolve</h2>
+<div class="video-wrapper"><iframe src="https://player.vimeo.com/video/1188843346?title=0&byline=0&portrait=0&badge=0" title="Nuclear set extension" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 </section>
-
-
-
-
-
-
-
-
-
 
 <section class="project-content">
-
-    <div class="project-block">
-        <h2>Overview</h2>
-        <p>
-            As part of my University work, I did some post production work using Davinci Resolve and Blender. This work included 3D modelling and CGI, compositing, Luma Keying, set extensions, 3D tracking and matchmove and more. 
-        </p>
-    </div>
-
-    <div class="project-block">
-        <h2>My Role</h2>
-        <ul>
-            <li>Editor</li>
-            <li>Colour Artist</li>
-        </ul>
-    </div>
-
-    <div class="project-block">
-        <h2>Gear Used</h2>
-        <ul>
-          <li>Blackmagic 4k Pocket CINE Camera</li>
-          
-        </ul>
-    </div>
-
-    <div class="project-block">
-        <h2>Reflection</h2>
-        <p>I prepared the footage in DaVinci Resolve before importing it into Blender for 3D work, starting with denoising to reduce compression artefacts and improve tracking accuracy. The footage was converted from Rec.709 to linear colour space using a CST to ensure accurate lighting interaction and consistency between the live-action plate and CG elements. I carried out camera tracking using positional and affine trackers, achieving a 0.08px solve error, then built out the scene with additional assets and GeoCables. Lighting was matched using an HDRI and calibrated against a MacBeth chart in Blender’s Cycles engine, with overscan applied to account for lens distortion before returning the render to Resolve for final grading. This process strengthened my understanding of VFX preparation, camera tracking, and CG integration workflows.
-        </p>
-        <br>
-        <p> Using Fusion in DaVinci Resolve, I explored matte creation through chroma keying and set extensions. I created a clean bluescreen key and refined it with polygon masks and transform nodes to isolate the subject while preserving selected foreground elements for stronger integration. The set extension was treated as a separate compositing pipeline, where I applied colour space conversion, colour matching, and perspective adjustments to align it with the original footage. Additional techniques such as lens distortion, light wrap, and Gaussian blur helped blend the subject naturally into the new environment, while film grain and prism blur unified the final image texture. This task strengthened my understanding of node-based compositing and demonstrated a structured workflow for matte refinement and set extension integration.</p>
-    </div>
-
+<div class="project-block"><h2>Overview</h2><p>For a university module I did post-production work in DaVinci Resolve and Blender, including 3D modelling and CGI, compositing, luma keying, set extensions, 3D tracking and matchmove.</p>
+</div>
+<div class="project-block"><h2>My Role</h2><ul><li>Editor</li><li>Colour Artist</li><li>VFX / Compositor</li></ul></div>
+<div class="project-block"><h2>Gear Used</h2><ul><li>Blackmagic Pocket Cinema Camera 4K</li><li>DaVinci Resolve (Fusion)</li><li>Blender</li></ul></div>
+<div class="project-block"><h2>Reflection</h2><p>I prepared the footage in DaVinci Resolve before importing it into Blender, starting with denoising to reduce compression artefacts and improve tracking. A CST converted the footage from Rec.709 to linear colour space, so lighting would interact accurately and stay consistent between the live-action plate and the CG. I tracked the camera with positional and affine trackers for a 0.08px solve error, then built the scene with extra assets and GeoCables. I matched lighting with an HDRI, calibrated against a Macbeth chart in Blender's Cycles engine, and applied overscan for lens distortion before returning the render to Resolve for the final grade. This strengthened my understanding of VFX preparation, camera tracking and CG integration.</p>
+<p>In Fusion I explored matte creation through chroma keying and set extensions. I pulled a clean bluescreen key and refined it with polygon masks and transform nodes, keeping selected foreground elements for stronger integration. I treated the set extension as a separate compositing pipeline, with colour space conversion, colour matching and perspective adjustments to align it with the original footage. Lens distortion, light wrap and Gaussian blur helped blend the subject into the new environment, while film grain and prism blur unified the final texture. This strengthened my node-based compositing and my workflow for matte refinement and set extensions.</p>
+</div>
 </section>
-
 
 <section class="back-section">
-    <a href="/video/" class="btn secondary">
-        Back to Video Portfolio
-    </a>
+<a href="/video/" class="btn secondary">Back to Video Portfolio</a>
 </section>
-
+<footer>
+    <p>&copy; 2026 Mayoorathan Sukumar</p>
+</footer>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "51d3fcab493d488e8d8cf872163c8996"}'></script><!-- End Cloudflare Web Analytics -->
- 
 </body>
 </html>

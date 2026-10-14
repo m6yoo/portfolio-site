@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography Portfolio</title>
+    <title>Photo | mayoo</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="photo-filters">
-        <button class="active" data-filter="onam">Onam 2025 · Canon 600D</button>
+        <button class="active" data-filter="onam">Onam 2025 · Canon 600D </button>
         <button data-filter="automotive">Automotive · Canon 4000D</button>
     </div>
 
@@ -87,11 +87,11 @@
 
 </section>
 
-<div class="lightbox" id="lightbox">
-    <button class="lb-close" id="lbClose">&times;</button>
-    <button class="lb-prev" id="lbPrev">&#8249;</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <button type="button" class="lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
     <img id="lbImg" src="" alt="">
-    <button class="lb-next" id="lbNext">&#8250;</button>
+    <button type="button" class="lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
 </div>
 
 <script>
@@ -247,6 +247,8 @@
         if (e.key === 'ArrowRight') step(1);
     });
 </script>
+
+<footer><p>&copy; 2026 Mayoorathan Sukumar</p></footer>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "51d3fcab493d488e8d8cf872163c8996"}'></script><!-- End Cloudflare Web Analytics -->
 
