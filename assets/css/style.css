@@ -528,3 +528,11 @@ blockquote {
     html { scroll-behavior: auto; }
     * { transition: none !important; }
 }
+
+.bookings .portfolio-grid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+}
