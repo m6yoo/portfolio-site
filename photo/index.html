@@ -292,17 +292,20 @@
         );
     }
 
-    function classifyRatio(img) {
-        const link = img.closest('a');
-        // Prefer the width/height attributes (known before the file loads);
-        // fall back to the natural size for any image without them.
-        const w = parseFloat(img.getAttribute('width')) || img.naturalWidth;
-        const h = parseFloat(img.getAttribute('height')) || img.naturalHeight;
-        if (!w || !h) return;
-        const actual = w / h;
-        const match = closestRatio(actual);
-        RATIOS.forEach(r => link.classList.remove(r.name));
-        link.classList.add(match.name);
+    function classifyRatio(img, preferNatural) {
+    const link = img.closest('a');
+    let w = parseFloat(img.getAttribute('width'));
+    let h = parseFloat(img.getAttribute('height'));
+    // Once the file has loaded, trust its real size over the attributes
+    if (preferNatural && img.naturalWidth && img.naturalHeight) {
+        w = img.naturalWidth;
+        h = img.naturalHeight;
+    }
+    if (!w || !h) { w = img.naturalWidth; h = img.naturalHeight; }
+    if (!w || !h) return;
+    const match = closestRatio(w / h);
+    RATIOS.forEach(r => link.classList.remove(r.name));
+    link.classList.add(match.name);
     }
 
     function computeRowSpan(link) {
@@ -316,35 +319,32 @@
         });
     }
 
-    function sizeCell(img) {
-        classifyRatio(img);
-        const category = img.closest('.photo-category');
-        if (category && category.classList.contains('active')) {
-            computeRowSpan(img.closest('a'));
-        }
+    function sizeCell(img, preferNatural = false) {
+    classifyRatio(img, preferNatural);
+    const category = img.closest('.photo-category');
+    if (category && category.classList.contains('active')) {
+        computeRowSpan(img.closest('a'));
+    }
     }
 
     function prepareCategory(category) {
-        const images = Array.from(category.querySelectorAll('.photo-grid img'));
+    const images = Array.from(category.querySelectorAll('.photo-grid img'));
 
-        images.forEach(img => {
-            if (img.getAttribute('width') && img.getAttribute('height')) {
-                // Size is known from the attributes, so there's no need to
-                // wait for the file. Images then fade/pop in as they arrive.
-                sizeCell(img);
-            } else if (img.complete && img.naturalWidth) {
-                sizeCell(img);
-            } else {
-                img.addEventListener('load', () => sizeCell(img), { once: true });
-            }
-        });
+    images.forEach(img => {
+        const hasSize = img.getAttribute('width') && img.getAttribute('height');
+        if (img.complete && img.naturalWidth) {
+            sizeCell(img, true);
+        } else {
+            if (hasSize) sizeCell(img);   // lay out straight away from the attributes
+            img.addEventListener('load', () => sizeCell(img, true), { once: true });
+        }
+    });
 
-        // Let the row-span calculations run, then reveal the grid.
+    requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                category.classList.add('gallery-ready');
-            });
+            category.classList.add('gallery-ready');
         });
+    });
     }
 
     document.querySelectorAll('.photo-category').forEach(prepareCategory);

@@ -390,12 +390,13 @@ blockquote {
     gap: var(--space-sm);
 }
 
-.photo-grid a { position: relative; display: block; overflow: hidden; border-radius: 2px; }
-.photo-grid a.ratio-1-1 { aspect-ratio: 1 / 1; }
-.photo-grid a.ratio-4-5 { aspect-ratio: 4 / 5; }
-.photo-grid a.ratio-5-4 { aspect-ratio: 5 / 4; }
-.photo-grid a.ratio-2-3 { aspect-ratio: 2 / 3; }
-.photo-grid a.ratio-3-2 { aspect-ratio: 3 / 2; grid-column: span 2; }
+.photo-grid a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 2px;
+    isolation: isolate;
+}
 
 .photo-grid img {
     width: 100%;
@@ -403,11 +404,16 @@ blockquote {
     object-fit: cover;
     display: block;
     filter: grayscale(100%) contrast(1.05);
-    transition: filter 0.5s ease, transform 6s ease;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transition: filter 0.4s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .photo-grid a:hover img,
-.photo-grid a:focus-visible img { filter: grayscale(0%); transform: scale(1.05); }
+.photo-grid a:focus-visible img {
+    filter: grayscale(0%) contrast(1.05);
+    transform: translateZ(0) scale(1.03);
+}
 
 /* lightbox */
 .lightbox {
