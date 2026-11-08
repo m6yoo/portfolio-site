@@ -396,6 +396,7 @@ blockquote {
     overflow: hidden;
     border-radius: 2px;
     isolation: isolate;
+    align-self: start;
 }
 
 .photo-grid img {

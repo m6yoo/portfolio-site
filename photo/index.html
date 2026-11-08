@@ -271,28 +271,26 @@
 </div>
 
 <script>
-    // Size each cell to the photo's real aspect ratio. Your sets only
-    // use 5 known ratios, so match each photo to the closest of those
-    // rather than guessing with thresholds — every ratio gets its own
-    // correctly-shaped cell, none of them share a generic "normal" box.
-    const ROW_UNIT = 10; // must match grid-auto-rows in style.css
-    const GAP = 16;       // must match var(--space-sm)
+    // Size each cell to the photo's real aspect ratio. Row spans are worked out
+// from the cell's width and its ratio, so they don't depend on images loading.
+const ROW_UNIT = 10; // must match grid-auto-rows in style.css
+const GAP = 16;      // must match var(--space-sm)
 
-    const RATIOS = [
-        { name: 'ratio-1-1', value: 1 / 1 },
-        { name: 'ratio-4-5', value: 4 / 5 },
-        { name: 'ratio-5-4', value: 5 / 4 },
-        { name: 'ratio-2-3', value: 2 / 3 },
-        { name: 'ratio-3-2', value: 3 / 2 },
-    ];
+const RATIOS = [
+    { name: 'ratio-1-1', value: 1 / 1 },
+    { name: 'ratio-4-5', value: 4 / 5 },
+    { name: 'ratio-5-4', value: 5 / 4 },
+    { name: 'ratio-2-3', value: 2 / 3 },
+    { name: 'ratio-3-2', value: 3 / 2 },
+];
 
-    function closestRatio(actual) {
-        return RATIOS.reduce((best, r) =>
-            Math.abs(r.value - actual) < Math.abs(best.value - actual) ? r : best
-        );
-    }
+function closestRatio(actual) {
+    return RATIOS.reduce((best, r) =>
+        Math.abs(r.value - actual) < Math.abs(best.value - actual) ? r : best
+    );
+}
 
-    function classifyRatio(img, preferNatural) {
+function classifyRatio(img, preferNatural) {
     const link = img.closest('a');
     let w = parseFloat(img.getAttribute('width'));
     let h = parseFloat(img.getAttribute('height'));
@@ -306,28 +304,29 @@
     const match = closestRatio(w / h);
     RATIOS.forEach(r => link.classList.remove(r.name));
     link.classList.add(match.name);
-    }
+}
 
-    function computeRowSpan(link) {
-        // Only meaningful while the cell is actually visible —
-        // a display:none ancestor reads a height of 0.
-        requestAnimationFrame(() => {
-            const height = link.getBoundingClientRect().height;
-            if (!height) return;
-            const rowSpan = Math.ceil((height + GAP) / (ROW_UNIT + GAP));
-            link.style.gridRowEnd = `span ${rowSpan}`;
-        });
-    }
+function computeRowSpan(link) {
+    const ratio = RATIOS.find(r => link.classList.contains(r.name));
+    const width = link.getBoundingClientRect().width;
+    if (!ratio || !width) return; // hidden tab, or not classified yet
+    const height = width / ratio.value;
+    link.style.gridRowEnd = `span ${Math.ceil((height + GAP) / (ROW_UNIT + GAP))}`;
+}
 
-    function sizeCell(img, preferNatural = false) {
+function layoutCategory(category) {
+    category.querySelectorAll('.photo-grid a').forEach(computeRowSpan);
+}
+
+function sizeCell(img, preferNatural = false) {
     classifyRatio(img, preferNatural);
     const category = img.closest('.photo-category');
     if (category && category.classList.contains('active')) {
         computeRowSpan(img.closest('a'));
     }
-    }
+}
 
-    function prepareCategory(category) {
+function prepareCategory(category) {
     const images = Array.from(category.querySelectorAll('.photo-grid img'));
 
     images.forEach(img => {
@@ -335,29 +334,26 @@
         if (img.complete && img.naturalWidth) {
             sizeCell(img, true);
         } else {
-            if (hasSize) sizeCell(img);   // lay out straight away from the attributes
+            if (hasSize) sizeCell(img);
             img.addEventListener('load', () => sizeCell(img, true), { once: true });
         }
     });
 
     requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            category.classList.add('gallery-ready');
-        });
+        layoutCategory(category);
+        requestAnimationFrame(() => category.classList.add('gallery-ready'));
     });
-    }
+}
 
     document.querySelectorAll('.photo-category').forEach(prepareCategory);
 
-    // Column width changes with viewport size, which changes each
-    // cell's real rendered height — recompute row-spans after resize.
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            document.querySelectorAll('.photo-category.active .photo-grid a').forEach(computeRowSpan);
-        }, 150);
-    });
+    // Re-run the layout whenever the grid's width changes (resize, rotate, scrollbar)
+    // and once everything has finished loading.
+    const relayoutActive = () =>
+    document.querySelectorAll('.photo-category.active').forEach(layoutCategory);
+    const gridObserver = new ResizeObserver(relayoutActive);
+    document.querySelectorAll('.photo-grid').forEach(g => gridObserver.observe(g));
+    window.addEventListener('load', relayoutActive);
 
     // Filter tabs
     const filterButtons = document.querySelectorAll('.photo-filters button');
@@ -380,50 +376,81 @@
     const lbImg = document.getElementById('lbImg');
     let currentLinks = [];
     let currentIndex = 0;
+    let lbToken = 0; // lets us ignore a full-size load that finishes after the viewer has moved on
 
-    function preloadNext() {
-        const next = currentLinks[(currentIndex + 1) % currentLinks.length];
-        if (next) new Image().src = next.getAttribute('href');
+    // Work out the original photo from the 1800px WebP path
+    function fullSrcFor(link) {
+        const m = link.getAttribute('href').match(/photo-opt\/(.+)-1800\.webp$/);
+        return m ? `/assets/images/photo/${m[1]}.jpg` : null;
     }
 
-    function openLightbox(links, index) {
-        currentLinks = links;
-        currentIndex = index;
-        lbImg.src = currentLinks[currentIndex].getAttribute('href');
-        lightbox.classList.add('open');
-        preloadNext();
-    }
+    function showPhoto() {
+        const link = currentLinks[currentIndex];
+        const token = ++lbToken;
 
-    function closeLightbox() {
-        lightbox.classList.remove('open');
-    }
+        // 1. Show the best WebP straight away
+       lbImg.src = link.getAttribute('href');
 
-    function step(dir) {
-        currentIndex = (currentIndex + dir + currentLinks.length) % currentLinks.length;
-        lbImg.src = currentLinks[currentIndex].getAttribute('href');
-        preloadNext();
-    }
+        // 2. Quietly load the full-size original, then swap it in
+        const full = fullSrcFor(link);
+        const saveData = navigator.connection && navigator.connection.saveData;
+        if (!full || saveData) return;
 
-    categories.forEach(cat => {
-        const links = Array.from(cat.querySelectorAll('.photo-grid a'));
-        links.forEach((link, index) => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                openLightbox(links, index);
-            });
+        const loader = new Image();
+        loader.onload = () => {
+            const swap = () => {
+                if (token === lbToken && lightbox.classList.contains('open')) lbImg.src = full;
+            };
+            // decode first so the swap doesn't flash
+            loader.decode ? loader.decode().then(swap, swap) : swap();
+        };
+        loader.src = full;
+}
+
+function preloadNext() {
+    const next = currentLinks[(currentIndex + 1) % currentLinks.length];
+    if (next) new Image().src = next.getAttribute('href'); // WebP only
+}
+
+function openLightbox(links, index) {
+    currentLinks = links;
+    currentIndex = index;
+    lightbox.classList.add('open');
+    showPhoto();
+    preloadNext();
+}
+
+function closeLightbox() {
+    lbToken++; // cancel any pending swap
+    lightbox.classList.remove('open');
+}
+
+function step(dir) {
+    currentIndex = (currentIndex + dir + currentLinks.length) % currentLinks.length;
+    showPhoto();
+    preloadNext();
+}
+
+categories.forEach(cat => {
+    const links = Array.from(cat.querySelectorAll('.photo-grid a'));
+    links.forEach((link, index) => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            openLightbox(links, index);
         });
     });
+});
 
-    document.getElementById('lbClose').addEventListener('click', closeLightbox);
-    document.getElementById('lbPrev').addEventListener('click', () => step(-1));
-    document.getElementById('lbNext').addEventListener('click', () => step(1));
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => {
-        if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') step(-1);
-        if (e.key === 'ArrowRight') step(1);
-    });
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+document.getElementById('lbNext').addEventListener('click', () => step(1));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+});
 </script>
 
 <footer><p>&copy; 2026 Mayoorathan Sukumar</p></footer>
